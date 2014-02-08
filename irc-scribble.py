@@ -31,6 +31,9 @@ serverbytes = connection.recv(4096)
 ## receive data/read into bytearray until bot is accepted
 while((b'MODE ' + bytes(botname, 'ascii') + b' :+i') not in serverbytes):
     serverbytes = connection.recv(4096)
+    if b':Nickname is already in use.' in serverbytes:
+        print("nick already in use")
+        sys.exit(2)
 print(serverbytes)
 
 # join a channel
