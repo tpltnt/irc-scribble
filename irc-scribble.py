@@ -11,7 +11,9 @@ import socket
 import sys
 
 botname = "irc_scribble_bot"
-channel = ""
+channel = "#ircscribble"
+
+
 # open a socket to talk to a freenode IRC server (in clear text)
 try:
     # IRC is TCP, so the python defaults are fine
@@ -44,6 +46,12 @@ if len(cbytes) != connection.send(cbytes):
 #
 # do you magic bot action here
 #
+
+# leave the channel
+cbytes = b'QUIT :Gone to data heaven\r\n'
+if len(cbytes) != connection.send(cbytes):
+    print("an error occured")
+print(connection.recv(4096))
 
 # close the connection
 connection.close()
