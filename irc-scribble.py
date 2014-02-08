@@ -11,7 +11,7 @@ import socket
 import sys
 
 botname = "irc_scribble_bot"
-
+channel = ""
 # open a socket to talk to a freenode IRC server (in clear text)
 try:
     # IRC is TCP, so the python defaults are fine
@@ -22,7 +22,7 @@ except OSError:
     sys.exit(1)
 
 # say hello to the server -> client bytes
-cbytes = b'NICK bot\r\nUSER ' + bytes(botname, 'ascii') + b' 0 * :test bot\r\n'
+cbytes = b'NICK ' + bytes(botname, 'ascii') + b'\r\nUSER ' + bytes(botname, 'ascii') + b' 0 * :test bot\r\n'
 if len(cbytes) != connection.send(cbytes):
     print("an error occured")
 
@@ -37,7 +37,7 @@ while((b'MODE ' + bytes(botname, 'ascii') + b' :+i') not in serverbytes):
 print(serverbytes)
 
 # join a channel
-cbytes = b'JOIN #foo\r\n'
+cbytes = b'JOIN ' + bytes(channel, 'ascii') + b'\r\n'
 if len(cbytes) != connection.send(cbytes):
     print("an error occured")
 
