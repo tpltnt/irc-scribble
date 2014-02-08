@@ -10,6 +10,8 @@ A very basic script to leave messages for others in an IRC channel.
 import socket
 import sys
 
+botname = "irc_scribble_bot"
+
 # open a socket to talk to a freenode IRC server (in clear text)
 try:
     # IRC is TCP, so the python defaults are fine
@@ -19,17 +21,26 @@ except OSError:
     print("can't open the connection")
     sys.exit(1)
 
-# say hello to the server
-message = b'NICK irc_scribble_bot\r\nUSER irc_scribble_bot 0 * :test bot\r\n'
-if len(message) != connection.send(message):
+# say hello to the server -> client bytes
+cbytes = b'NICK bot\r\nUSER ' + bytes(botname, 'ascii') + b' 0 * :test bot\r\n'
+if len(cbytes) != connection.send(cbytes):
     print("an error occured")
 
 # reading server response
 serverbytes = connection.recv(4096)
 ## receive data/read into bytearray until bot is accepted
-while(b':irc_scribble_bot MODE irc_scribble_bot :+i' not in serverbytes):
+while((b'MODE ' + bytes(botname, 'ascii') + b' :+i') not in serverbytes):
     serverbytes = connection.recv(4096)
 print(serverbytes)
+
+# join a channel
+cbytes = b'JOIN #foo\r\n'
+if len(cbytes) != connection.send(cbytes):
+    print("an error occured")
+
+#
+# do you magic bot action here
+#
 
 # close the connection
 connection.close()
