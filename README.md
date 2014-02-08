@@ -10,3 +10,4 @@ resources
 * [RFC 2812: Internet Relay Chat: Client Protocol](https://tools.ietf.org/html/rfc2812)
 * [RFC 2810: Internet Relay Chat: Architecture](https://tools.ietf.org/html/rfc2810)
 * [RFC 1459: Internet Relay Chat Protocol](https://tools.ietf.org/html/rfc1459)
+* [freenode documentation](http://freenode.net/index.shtml)
