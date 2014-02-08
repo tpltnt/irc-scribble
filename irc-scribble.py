@@ -46,6 +46,9 @@ if len(cbytes) != connection.send(cbytes):
 #
 # do you magic bot action here
 #
+cbytes = b'PRIVMSG ' + bytes(channel, 'ascii') +  b' :howdy!\r\n'
+if len(cbytes) != connection.send(cbytes):
+    print("an error occured")
 
 # leave the channel
 cbytes = b'QUIT :Gone to data heaven\r\n'
