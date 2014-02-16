@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 """
-A very basic script to leave messages for others in an IRC channel.
+A very basic script to monitor raw IRC messages
+on the commandline.
 
 :author: tpltnt
 :license: AGPLv3 (or later)
@@ -62,6 +63,7 @@ while((b'go away') not in serverbytes):
         cbytes = b'PONG :' + bytes(clientstring, 'ascii') +  b'\r\n'
         if len(cbytes) != connection.send(cbytes):
             print("an error occured during PING-PONG")
+        serverbytes = connection.recv(4096)
     print(serverbytes)
     serverbytes = connection.recv(4096)
 
