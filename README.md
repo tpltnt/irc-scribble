@@ -1,7 +1,7 @@
 irc-scribble
 ============
 
-A simple IRC bot to leave messages for others. This is meant to a) study the IRC protocol and b) provide a functionality along the way. It does lack a lot of the proper protocol handling, just uses the bare minimum to get by.
+A simple IRC bot to monitor raw IRC messages. This is meant to a) study the IRC protocol and b) provide a functionality along the way. It does lack a lot of the proper protocol handling, just uses the bare minimum to get by.
 
 license: AGPLv3 (or later)
 
